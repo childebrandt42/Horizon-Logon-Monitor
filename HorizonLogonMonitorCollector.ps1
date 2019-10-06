@@ -19,11 +19,12 @@
 
 $LogFolderLocation = "C:\Temp\LogonProfileLogs" #Location for Remote Logon Monitor Path
 $LogonFileOutPut = "C:\Temp\LogData.csv" #Location and file name for Output CSV file.
+$Hours = '4' #Hours to go back and read log files. At first you will want to collect all
 
 #---------------------------------------------------------------------------------------------#
 #                      Script Do not edit Varribles                                           #
 #---------------------------------------------------------------------------------------------#
-$LogFolder = Get-item "$LogFolderLocation\*" | where {$_.Lastwritetime -gt (date).addhours(-4)}
+$LogFolder = Get-item "$LogFolderLocation\*" | where {$_.Lastwritetime -gt (date).addhours(-$Hours)}
 $LogData =@('')
 
 #---------------------------------------------------------------------------------------------#
